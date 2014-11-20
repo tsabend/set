@@ -1,0 +1,74 @@
+<DOCTYPE!HTML>
+<html>
+
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<head>
+<link rel="stylesheet" type="text/css" href="cards.css">
+
+  <title>SET cards</title>
+</head>
+
+
+<body>
+
+<h1>SET</h1>
+
+<h2 class="startGame">Start a new game</h2>
+
+<div id="gameInfo">
+Cards Left
+<input id="cardsLeft" type="number" name="cardsLeft" placeholder="81" readonly>
+Sets Completed
+<input id="correctSets" type="number" name="correctSets" placeholder="0" readonly>
+Seconds Elapsed
+<input id="time" type="number" name="time" placeholder="0" readonly>
+
+</div>
+
+
+
+
+<div class="endGameScreen invisible">
+<h4>GAME OVER</h4>
+<h4>ENTER YOUR SCORE AND INFO BELOW</h4>
+<h5>Enter your name and favorite gif</h5>
+<form type ="post" onsubmit="addTopTen(); return false;">
+<input id="user_name" type="text" placeholder="Name" name="user_name"><br>
+<input id="gif_url" type="text" placeholder="Url of favorite gif" name="gif_url"><br>
+<input id="score" type="number" name="score" placeholder="500" readonly><br>
+<input type="submit" value="Submit Score">
+</form>
+<br><br>
+</div>
+
+<div class = "highScores invisible">
+<h1>!!!HALL OF FAME!!!</h1>
+<h3>Top 10 All Time High Scores</h3>
+
+<ul id="topTenUsers">
+</ul>
+</div>
+
+<div class="board">
+<div class="row1">
+</div>
+
+<div class="row2">
+</div>
+
+<div class="row3">
+</div>
+
+<p class="cheatButton">CHEAT!
+</p>
+
+</div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="./setjquery.js"></script>
+    <script type="text/javascript" src="./timer.js"></script>
+    <script type="text/javascript" src="./view.js"></script>
+    <script type="text/javascript" src="./model.js"></script>
+    <script type="text/javascript" src="./setserver.js"></script>
+</html>

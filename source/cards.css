@@ -1,0 +1,132 @@
+body {
+  /*background: #999566;*/
+  /*transition: background-color  .2s;*/
+}
+
+.rightflash {
+  -moz-animation: rightflash .4s ease-out;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation: rightflash .4s ease-out;
+  -webkit-animation-iteration-count: 1;
+  -ms-animation: rightflash .4s ease-out;
+  -ms-animation-iteration-count: 1;
+}
+
+@-webkit-keyframes rightflash {
+    0% { background-color:transparent;}
+    20% { background-color:green;}        
+    100% {background-color:transparent;}
+}
+
+
+@-moz-keyframes rightflash {
+    0% { background-color:transparent;}
+    20% { background-color:green;}        
+    100% {background-color:transparent;}
+}
+
+@-ms-keyframes rightflash {
+    0% { background-color:transparent;}
+    20% { background-color:green;}        
+    100% {background-color:transparent;}
+}
+
+.wrongflash{
+  -moz-animation: wrongflash .4s ease-out;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation: wrongflash .4s ease-out;
+  -webkit-animation-iteration-count: 1;
+  -ms-animation: wrongflash .4s ease-out;
+  -ms-animation-iteration-count: 1;
+}
+
+@-webkit-keyframes wrongflash {
+    0% { background-color:transparent;}
+    20% { background-color:red;}        
+    100% {background-color:transparent;}
+}
+
+
+@-moz-keyframes wrongflash {
+    0% { background-color:transparent;}
+    20% { background-color:red;}        
+    100% {background-color:transparent;}
+}
+
+@-ms-keyframes wrongflash {
+    0% { background-color:transparent;}
+    20% { background-color:red;}        
+    100% {background-color:transparent;}
+}
+
+
+
+h1 {
+ margin-left: 220;
+}
+
+.card {
+  margin-left: 30px;
+  list-style-type: none;
+  border: 2px black solid;
+  border-radius: 10px;
+  padding: 18px 30px 18px 30px;
+  text-align: center;
+  max-height: 150px;
+  height: 150px;
+}
+
+.three img {
+  width: 100%;
+}
+
+
+.two img {
+  width: 100%;
+  margin-top: 18px;
+}
+
+
+.one img {
+  width: 100%;
+  margin-top: 50px;
+}
+
+li {
+  width: 45px;
+}
+
+.row1 {
+  display: -webkit-inline-box;
+}
+
+.row2 {
+  display: -webkit-inline-box;
+}
+
+.row3 {
+  display: -webkit-inline-box;
+}
+
+
+
+.clicked_on {
+  background: grey;
+  opacity: .4;
+}
+
+.board {
+  margin-left: 50px;
+  display: table-caption;
+}
+
+.endGameScreen {
+}
+
+.invisible {
+  display: none;
+}
+
+.gameInfo {
+  display: inline-flex;
+}
