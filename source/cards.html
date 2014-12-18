@@ -1,7 +1,7 @@
 <DOCTYPE!HTML>
 <html>
 <head>
-<!-- <link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/4.1.4/basscss.min.css" rel="stylesheet"> -->
+<link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/4.1.4/basscss.min.css" rel="stylesheet">
 <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
 <link rel="stylesheet" type="text/css" href="cards.css">
 
@@ -10,21 +10,21 @@
 
 
 <body>
-
+<div class="container center bg-white	">
 <h1>SET</h1>
 
 <h2 class="startGame">Start a new game</h2>
 
-<div id="gameInfo">
-Cards Left
-<input id="cardsLeft" type="number" name="cardsLeft" placeholder="81" readonly>
-Sets Completed
-<input id="correctSets" type="number" name="correctSets" placeholder="0" readonly>
-Seconds Elapsed
-<input id="time" type="number" name="time" placeholder="0" readonly>
+<div id="gameInfo" class="">
+	<ul>
+<li class="info"><p>Cards Left</p><input id="cardsLeft" type="number" name="cardsLeft" placeholder="81" readonly></li>
+<li class="info"><p>Sets Completed</p><input id="correctSets" type="number" name="correctSets" placeholder="0" readonly></li>
+<li class="info"><p>Seconds Elapsed</p><input id="time" type="number" name="time" placeholder="0" readonly></li>
+	</ul>
 
 </div>
 
+</div>
 
 
 
@@ -49,7 +49,8 @@ Seconds Elapsed
 </ul>
 </div>
 
-<div class="board">
+<div class="container clearfix bg-blue py1">
+<div class="board center">
 <div class="row1">
 </div>
 
@@ -57,6 +58,7 @@ Seconds Elapsed
 </div>
 
 <div class="row3">
+</div>
 </div>
 
 <p class="cheatButton">CHEAT!
@@ -68,7 +70,6 @@ Seconds Elapsed
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
     <script type="text/javascript" src="./jquery.min.js"></script>
     <script type="text/javascript" src="./controller/setjquery.js"></script>
-    <script type="text/javascript" src="./timer.js"></script>
     <script type="text/javascript" src="./view/view.js"></script>
     <script type="text/javascript" src="./model/card.js"></script>
     <script type="text/javascript" src="./model/game.js"></script>
