@@ -35,17 +35,18 @@ Game.prototype.createBoard = function () {
 // Checks if the properties are all same or all different for each property. Returns true or false
 Game.prototype.drawCard = function (number) {
   // end the game if there are no cards
-  if(this.deck.length === 0) {
-    this.endTheGame()
-    return false
+  if(this.deck.length === 0 && this.checkBoard() === false) {
+    return false 
   }
   // remove random card from the deck and add to the board
-  for(var i = 0; i < number; i++) {
-    this.board.push(sample(this.deck))
+  else if(this.deck.length > 0){
+    for(var i = 0; i < number; i++) {
+      this.board.push(sample(this.deck))
+    }
   }
   // check the board to make sure there is at least 1 set, if not, draw 3 more cards
   if(this.checkBoard() === false) {
-    console.log("No possible sets")
+    console.log("No possible sets", this.correctSets)
     this.drawCard(3)
   }
 }
@@ -71,17 +72,35 @@ Game.prototype.checkBoard = function() {
 }
 // checks if 3 cards are a valid set. adds points and draws if they are.
 Game.prototype.guess = function (cards) {
-  if(this.isSet(cards)) {
-    this.correctSets++
-    this.removeSet(cards)
-    if (this.board.length < 12) {
-    	this.drawCard(cards.length)
-  	}
-    return true
+  if(cards === false) {
+    console.log('got false in cards')
+    this.drawCard(3)
   }
-  else {
+  if(this.board.length > 12) { 
+    if(this.isSet(cards)) {
+      this.correctSets++
+      this.removeSet(cards)
+      // this.isOver()
+      return true
+    } else {
     return false
+    }
+  } else {
+    if(this.isSet(cards)) {
+      this.correctSets++
+      this.removeSet(cards)
+      // this.isOver()
+      this.drawCard(3)
+      return true
+    } else {
+    return false
+    }
+
   }
+}
+
+Game.prototype.isOver = function(){
+  return this.deck.length === 0 && this.checkBoard() === false
 }
 // removes an array of cards from the board
 Game.prototype.removeSet = function (cards) {
@@ -90,9 +109,6 @@ Game.prototype.removeSet = function (cards) {
     this.board.splice(index, 1)
   }
 }
-
-
-
 
 // Helper methods on arrays
 // Removes a random element from an array
@@ -142,7 +158,8 @@ Game.prototype.hackBoard = function() {
       return combinations[i];
     }
   }
-  return false;
+  this.drawCard(3)
+  return [this.board[0],this.board[1],this.board[2]]
 };
 // Hinting
 Game.prototype.hint = function() {
