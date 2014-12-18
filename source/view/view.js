@@ -1,11 +1,11 @@
 // These functions help display the board and
 // report certain board changes back to the controller
-function displayGameInfo(cards_left, sets_gotten) {
-	$('#cardsLeft').val(cards_left);
-	$('#correctSets').val(sets_gotten);
+function displayGameInfo(cardsLeft, correctSets) {
+	$('#cardsLeft').val(cardsLeft)
+	$('#correctSets').val(correctSets)
 }
 
-function getLocations (cards){
+function getLocations(cards){
 	var board_locations = []
 	for(i = 0; i < cards.length; i++) {
 		board_locations.push($('.clicked_on')[i].getAttribute('data-location'))
@@ -13,7 +13,7 @@ function getLocations (cards){
 	return board_locations
 }
 
-function getGuess (locations) {
+function getGuess(locations) {
 	guess_array = []
 	for(var coordinate in locations){
 		guess_array.push(game.board[locations[coordinate]])
@@ -60,27 +60,26 @@ function makeImageHtml(number, shape, color, shade) {
 }
 
 function addToRow(row, card) {
-	row_name = '.row' + row.toString();
-	$(row_name).append(card);
+	$('.row' + row.toString()).append(card);
 }
 
 function makeCard(card, location) {
-	var list_html = "";
+	var cardFace = "";
 	for(var i = 0; i < card.number; i++) {
-		list_html += "<li><img src=' ../img/" + makeImageHtml(card.number, card.shape, card.color, card.shading) + "'></li>"
+		cardFace += "<li class='image-container'><img src=' ../img/" + makeImageHtml(card.number, card.shape, card.color, card.shading) + "'></li>"
 	}
-	return "<ul data-location='" + location + "' class='card " + numberAsWord(card.number) + "'>" + list_html + "</ul>";
+	return "<ul data-location='" + location + "' class='card " + numberAsWord(card.number) + "'>" + cardFace + "</ul>";
 }
 
 function displayCards(card_array) {
-	var row_num = 1;
+	var rowNum = 1;
 	for(i = 0; i < card_array.length; i++) {
 		if(i % 4 === 0 && i > 0){
-			row_num += 1;
+			rowNum += 1;
 		}
 		if(i > 11) {
-			row_num = i - 11
+			rowNum = i - 11
 		}
-		addToRow(row_num, makeCard(card_array[i], i))
+		addToRow(rowNum, makeCard(card_array[i], i))
 	}
 }
