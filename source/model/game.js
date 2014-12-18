@@ -32,23 +32,10 @@ Game.prototype.makeDeck = function() {
 Game.prototype.createBoard = function () {
   this.drawCard(12);
 }
-
 // Checks if the properties are all same or all different for each property. Returns true or false
-Game.prototype.isSet = function(cards) {
-// for each property, make an array of values across the 3 cards
-  return Object.keys(cards[0]).map(function(property){
-    return cards.map(function(card){
-      return card[property]
-    })
-  }).every(function(attributes_array){
-    return unique(attributes_array).length != 2
-  })
-  // return allTrue(attributes)
-}
-
 Game.prototype.drawCard = function (number) {
   // end the game if there are no cards
-  if (this.deck.length === 0) {
+  if(this.deck.length === 0) {
     this.endTheGame()
     return false
   }
@@ -61,8 +48,17 @@ Game.prototype.drawCard = function (number) {
     console.log("No possible sets")
     this.drawCard(3)
   }
-};
-
+}
+Game.prototype.isSet = function(cards) {
+// for each property, make an array of attributes across the 3 cards
+  return Object.keys(cards[0]).map(function(property){
+    return cards.map(function(card){
+      return card[property]
+    })
+  }).every(function(attributes_array){ // return true if every array of attributes has a unique length not equal to 2
+    return unique(attributes_array).length != 2
+  })
+}
 // Returns true if there is at least 1 possible set, else false
 Game.prototype.checkBoard = function() {
 	var combinations = k_combinations(this.board, 3)
@@ -72,31 +68,33 @@ Game.prototype.checkBoard = function() {
 		}
 	}
 	return false
-};
-
-Game.prototype.removeSet = function (cards) {
-  for (var i = cards.length -1; i >=0 ; i--){
-    index = this.board.indexOf(cards[i])
-    this.board.splice(index, 1)
-  }
 }
-// checks if 3 cards are a valid set and draws if they are
+// checks if 3 cards are a valid set. adds points and draws if they are.
 Game.prototype.guess = function (cards) {
   if(this.isSet(cards)) {
     this.correctSets++
     this.removeSet(cards)
     if (this.board.length < 12) {
-    	this.drawCard(cards.length);
+    	this.drawCard(cards.length)
   	}
     return true
   }
   else {
-    return false;
+    return false
   }
-};
+}
+// removes an array of cards from the board
+Game.prototype.removeSet = function (cards) {
+  for(var i = cards.length -1; i >=0 ; i--){
+    index = this.board.indexOf(cards[i])
+    this.board.splice(index, 1)
+  }
+}
 
-// Helper methods
 
+
+
+// Helper methods on arrays
 // Removes a random element from an array
 sample = function(array) {
   return array.splice(Math.floor(Math.random() * (array.length)),1)[0];
@@ -109,29 +107,29 @@ unique = function(array) {
 }
 // Returns all possible combinations of a set of items gor a given length k
 k_combinations = function(set, k) {
-	var i, j, combs, head, tailcombs;	
+	var i, j, combs, head, tailcombs	
 	if (k > set.length || k <= 0) {
-		return [];
+		return []
 	}
 	if (k == set.length) {
-		return [set];
+		return [set]
 	}
 	if (k == 1) {
-		combs = [];
+		combs = []
 		for (i = 0; i < set.length; i++) {
-			combs.push([set[i]]);
+			combs.push([set[i]])
 		}
-		return combs;
+		return combs
 	}	
-	combs = [];
+	combs = []
 	for (i = 0; i < set.length - k + 1; i++) {
-		head = set.slice(i, i+1);
-		tailcombs = k_combinations(set.slice(i + 1), k - 1);
+		head = set.slice(i, i+1)
+		tailcombs = k_combinations(set.slice(i + 1), k - 1)
 		for (j = 0; j < tailcombs.length; j++) {
-			combs.push(head.concat(tailcombs[j]));
+			combs.push(head.concat(tailcombs[j]))
 		}
 	}
-	return combs;
+	return combs
 }
 
 
@@ -165,8 +163,8 @@ Game.prototype.hint = function() {
         combinations[i][2].color,
         combinations[i][2].shape
         )
-      return true;
+      return true
     }
   }
-  return false;
-};
+  return false
+}
