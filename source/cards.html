@@ -2,7 +2,7 @@
 <html>
 <head>
 <link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/4.1.4/basscss.min.css" rel="stylesheet">
-<!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="cards.css">
 
   <title>SET</title>
@@ -10,19 +10,23 @@
 
 
 <body>
-<div class="container center bg-white	">
-<h1>SET</h1>
+<div class="container bg-purple rounded">
+  <div class="inline-block">
+    <h1 class="px4">SET</h1>
+  </div>
 
-<h2 class="startGame">Start a new game</h2>
+<button class="hint invisible">Hint</button>
 
-<div id="gameInfo" class="">
-	<ul>
-<li class="info"><p>Cards Left</p><input id="cardsLeft" type="number" name="cardsLeft" placeholder="81" readonly></li>
-<li class="info"><p>Sets Completed</p><input id="correctSets" type="number" name="correctSets" placeholder="0" readonly></li>
-<li class="info"><p>Seconds Elapsed</p><input id="time" type="number" name="time" placeholder="0" readonly></li>
-	</ul>
+  <div class="right">
+    <div id="gameInfo" class="">
+    	<ul>
+        <li class="info"><p class="h2">Cards Left</p><input class="field-light is-warning" id="cardsLeft" type="number" name="cardsLeft" placeholder="81" readonly></li>
+        <li class="info"><p class="h2">Sets Completed</p><input class="field-light is-success" id="correctSets" type="number" name="correctSets" placeholder="0" readonly></li>
+        <li class="info"><p class="h2">Seconds Elapsed</p><input class="field-light is-failure" id="time" type="number" name="time" placeholder="0" readonly></li>
+    	</ul>
 
-</div>
+    </div>
+  </div>
 
 </div>
 
@@ -49,7 +53,13 @@
 </ul>
 </div>
 
-<div class="container clearfix bg-black py1">
+<div class="container clearfix bg-light-purple py1">
+
+<div class="col">
+
+</div>
+<button class="button-blue-outline mx0 center startGame">Start a new game</button>
+
 <div class="board center">
 <div class="row1">
 </div>
