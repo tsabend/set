@@ -1,9 +1,36 @@
+/* purple: #9856c0*/
+/*orange: #F6BE43*/
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+@import url(http://fonts.googleapis.com/css?family=Amatic+SC);
+
 body {
-  background-color: orange;
+  background-color: #F4F4F4;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
-.bg-black {
-  background-color: #151515;
+h1 {
+  font-family: 'Egypt 22', cursive;
+  font-size: 10em;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding-bottom: 5px;
+}
+
+input {
+  width: 80px;
+}
+
+.bg-light-purple {
+  background-color: #8F79AC
+}
+
+.bg-purple {
+  background-color: #7A589C;
+  background-color: #C91921;
+  background-color: #948CBD;
+  #8F79AC#8F79AC
+
 }
 
 .rightflash {
@@ -110,6 +137,8 @@ li {
   height:100%
 }
 
+
+
   @media (min-width: 320px) and (max-width: 1024px){.splash{min-height:360px}
 }
   @media (min-width: 1024px) and (max-width: 1200px){.splash{min-height:460px}
@@ -124,4 +153,3 @@ li {
     display:block;
   width:80px;margin-top:1em}
 }
-
