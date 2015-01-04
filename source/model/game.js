@@ -19,8 +19,8 @@ Game.prototype.makeDeck = function() {
         for(l = 0; l < shapes.length; l++) {
           deck.push(new Card({
             number: numbers[i],
-            shading: shadings[j], 
-            color: colors[k], 
+            shading: shadings[j],
+            color: colors[k],
             shape: shapes[l]}))
         }
       }
@@ -36,7 +36,7 @@ Game.prototype.createBoard = function () {
 Game.prototype.drawCard = function (number) {
   // end the game if there are no cards
   if(this.deck.length === 0 && this.checkBoard() === false) {
-    return false 
+    return false
   }
   // remove random card from the deck and add to the board
   else if(this.deck.length > 0){
@@ -75,13 +75,13 @@ Game.prototype.guess = function (cards) {
   if(this.isSet(cards)) {
     this.correctSets++
     this.removeSet(cards)
-    if(this.board.length <= 12) { 
+    if(this.board.length <= 12) {
       this.drawCard(3)
     }
     return true
   } else {
   return false
-  } 
+  }
 }
 
 Game.prototype.isOver = function(){
@@ -108,7 +108,7 @@ unique = function(array) {
 }
 // Returns all possible combinations of a set of items gor a given length k
 k_combinations = function(set, k) {
-	var i, j, combs, head, tailcombs	
+	var i, j, combs, head, tailcombs
 	if (k > set.length || k <= 0) {
 		return []
 	}
@@ -121,7 +121,7 @@ k_combinations = function(set, k) {
 			combs.push([set[i]])
 		}
 		return combs
-	}	
+	}
 	combs = []
 	for (i = 0; i < set.length - k + 1; i++) {
 		head = set.slice(i, i+1)
@@ -151,20 +151,20 @@ Game.prototype.hint = function() {
   var combinations = k_combinations(this.board, 3)
   for (var i = 0; i < combinations.length; i++) {
     if(this.isSet(combinations[i])) {
-      console.log(combinations[i][0].number,
-        combinations[i][0].shading,
-        combinations[i][0].color,
-        combinations[i][0].shape,
-        combinations[i][1].number,
-        combinations[i][1].shading,
-        combinations[i][1].color,
-        combinations[i][1].shape,
-        combinations[i][2].number,
-        combinations[i][2].shading,
-        combinations[i][2].color,
-        combinations[i][2].shape
-        )
-      return true
+      return "It starts with " + combinations[i][0].number + " " + combinations[i][0].shading + " " + combinations[i][0].color + " " + combinations[i][0].shape
+      //   combinations[i][0].number,
+      //   combinations[i][0].shading,
+      //   combinations[i][0].color,
+      //   combinations[i][0].shape,
+      //   combinations[i][1].number,
+      //   combinations[i][1].shading,
+      //   combinations[i][1].color,
+      //   combinations[i][1].shape,
+      //   combinations[i][2].number,
+      //   combinations[i][2].shading,
+      //   combinations[i][2].color,
+      //   combinations[i][2].shape
+      // return true
     }
   }
   return false

@@ -1,49 +1,51 @@
 // These functions help display the board and
 // report certain board changes back to the controller
-function displayGameInfo(cardsLeft, correctSets) {
-	$('#cardsLeft').val(cardsLeft)
-	$('#correctSets').val(correctSets)
+
+function View() {
 }
 
-function getLocations(cards){
-	var board_locations = []
-	for(i = 0; i < cards.length; i++) {
-		board_locations.push($('.clicked_on')[i].getAttribute('data-location'))
-	}
-	return board_locations
+View.prototype.updateGame = function(game) {
+	this.clearBoard()
+	this.displayGameInfo(game)
+	this.displayCards(game.board);
+}
+//
+View.prototype.displayGameInfo = function(game) {
+	$('#cardsLeft').val(game.deck.length)
+	$('#correctSets').val(game.correctSets)
 }
 
-function getGuess(locations) {
-	guess_array = []
-	for(var coordinate in locations){
-		guess_array.push(game.board[locations[coordinate]])
-	}
-	return guess_array
+View.prototype.showGame = function() {
+	$('.board').show()
+	$('.gameInfo').show()
+	$('.hint').show()
+	$('.endGameScreen').hide()
+	$('.highScores').hide()
 }
 
-function clearBoard() {
+View.prototype.showEndGame = function() {
+	$('.board').hide()
+	$('.gameInfo').hide()
+	$('.endGameScreen').show()
+	$('.highScores').show()
+}
+
+View.prototype.clearBoard = function() {
 	$('.row1').empty()
 	$('.row2').empty()
 	$('.row3').empty()
 }
 
-function rightFlash(){
-	var flash = '<div data-flash class="rightFlash"></div>'
+View.prototype.flash = function(answer){
+	var flash = '<div data-flash class="' + answer + 'Flash"></div>'
 	$('html').append(flash).hide().fadeIn(10)
 	$('.clicked_on').removeClass('clicked_on');
- 	$('[data-flash]').fadeOut(300)
-}
-
-function wrongFlash(){
-	var flash = '<div data-flash class="wrongFlash"></div>'
-	$('html').append(flash).hide().fadeIn(10)
-	$('.clicked_on').removeClass('clicked_on');
- 	$('[data-flash]').fadeOut(300)
+	$('[data-flash]').fadeOut(300)
 }
 
 
 // All these functions help add the right images to the board
-function numberAsWord(number) {
+View.prototype.numberAsWord = function(number) {
 	if(number === 1) {
 		return "one" }
 	else if(number === 2) {
@@ -53,23 +55,23 @@ function numberAsWord(number) {
 	}
 }
 
-function makeImageHtml(number, shape, color, shade) {
+View.prototype.makeImageHtml = function(number, shape, color, shade) {
 	return shape + '_' + shade + '_' + color + '.png'
 }
 
-function addToRow(row, card) {
+View.prototype.addToRow = function(row, card) {
 	$('.row' + row.toString()).append(card);
 }
 
-function makeCard(card, location) {
+View.prototype.makeCard = function(card, location) {
 	var cardFace = "";
 	for(var i = 0; i < card.number; i++) {
-		cardFace += "<li class='image-container'><img src=' ../img/" + makeImageHtml(card.number, card.shape, card.color, card.shading) + "'></li>"
+		cardFace += "<li class='image-container'><img src=' ../img/" + this.makeImageHtml(card.number, card.shape, card.color, card.shading) + "'></li>"
 	}
-	return "<ul data-location='" + location + "' class='card " + numberAsWord(card.number) + "'>" + cardFace + "</ul>";
+	return "<ul data-location='" + location + "' class='card " + this.numberAsWord(card.number) + "'>" + cardFace + "</ul>";
 }
 
-function displayCards(card_array) {
+View.prototype.displayCards = function(card_array) {
 	var rowNum = 1;
 	for(i = 0; i < card_array.length; i++) {
 		if(i % 4 === 0 && i > 0){
@@ -78,6 +80,6 @@ function displayCards(card_array) {
 		if(i > 11) {
 			rowNum = i - 11
 		}
-		addToRow(rowNum, makeCard(card_array[i], i))
+		this.addToRow(rowNum, this.makeCard(card_array[i], i))
 	}
 }

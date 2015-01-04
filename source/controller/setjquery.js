@@ -1,64 +1,57 @@
-$(document).ready(function(){	
+$(document).ready(function(){
 		// for(var i = 0; i < 100; i++){
-		clearBoard();
-		runGame();
+		// clearBoard();
+		// runGame();
 		// autoSolve(game);
 		// }
 	$('.startGame').on( "click", function(){
-		$('.board').removeClass('invisible');
-		$('.gameInfo').removeClass('invisible');
-		$('.endGameScreen').addClass('invisible');
-		$('.highScores').addClass('invisible');
-		clearBoard();
-		runGame();
+		$(this).remove();
+		view = new View
+		game = new Game
+
+		view.showGame
+		view.updateGame(game)
+		displayTime()
+		$('.hint').show()
+		$('.card').click(cardClick)
+		$('.hint').click(function() {alert(game.hint())})
+		$('.cheatbutton').click(function() {autoSolve(game)})
 	});
 });
 
-// Main controller
-function runGame() {
-	game = new Game
-	displayGameInfo(game.deck.length, game.correctSets)
-	displayTime()
-	displayCards(game.board)
-	$('.card').click(cardClick)
-	$('.cheatbutton').click(function() {autoSolve(game)})
-	$(this).off()
-}
+
+
 // Cheat function for demonstration purposes
 function autoSolve(game) {
 		while(game.isOver()===false) {
 		game.guess(game.hackBoard());
 	}
-		clearBoard();
-		displayGameInfo(game.deck.length, game.correctSets)
-		displayCards(game.board);
+		view.updateGame(game)
 		$('.card').click(cardClick);
 		endGame()
 }
 // Makes cards talk between view-controller-model
 function cardClick (){
 	$(this).toggleClass('clicked_on');
-	var clickedItems = $('.clicked_on');
-	if (clickedItems.length === 3) {
-		if(game.guess(getGuess(getLocations(clickedItems)))) {
-			clearBoard();
-			displayGameInfo(game.deck.length, game.correctSets)
-			displayCards(game.board);
+
+	if ($('.clicked_on').length === 3) {
+		var cards = $('.clicked_on').get().map(function(item){
+			return game.board[item.getAttribute('data-location')]
+		})
+
+		if(game.guess(cards)) {
+			view.updateGame(game)
 			$('.card').click(cardClick);
-				rightFlash();
-		}
-		else {
-			wrongFlash();
+			view.flash("right");
+		} else {
+			view.flash("wrong");
 		}
 	}
 }
 // Controls the end of the game view and loads the server (by calling init())
 function endGame() {
 	console.log("in endGame");
-	$('.board').addClass('invisible');
-	$('.gameInfo').addClass('invisible');
-	$('.endGameScreen').removeClass('invisible');
-	$('.highScores').removeClass('invisible');
+	view.showEndGame()
 	$('#score').val(game.score);
 	stopTimer();
 	$('.startGame').on();
@@ -66,7 +59,7 @@ function endGame() {
 // Show the game time
 function displayTime() {
     time = Math.floor((Date.now() - game.startingTime)/1000)
-    document.getElementById("time").value = time
+    $("#time").val(time)
     t = setTimeout(function(){displayTime()}, 1000);
 }
 function stopTimer() {
