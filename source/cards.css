@@ -1,64 +1,28 @@
 body {
-  background-color: black;
+  background-color: orange;
+}
+
+.bg-black {
+  background-color: #151515;
 }
 
 .rightflash {
-  -moz-animation: rightflash .4s ease-out;
-  -moz-animation-iteration-count: 1;
-  -webkit-animation: rightflash .4s ease-out;
-  -webkit-animation-iteration-count: 1;
-  -ms-animation: rightflash .4s ease-out;
-  -ms-animation-iteration-count: 1;
+  background-color:green;
+  height:100%;
+  width:100%;
+  position:fixed;
+  top:0;
+  opacity: .7;
 }
 
-@-webkit-keyframes rightflash {
-    0% { background-color:transparent;}
-    20% { background-color:green;}        
-    100% {background-color:transparent;}
+.wrongflash {
+  background-color:red;
+  height:100%;
+  width:100%;
+  position:fixed;
+  top:0;
+  opacity: .7;
 }
-
-
-@-moz-keyframes rightflash {
-    0% { background-color:transparent;}
-    20% { background-color:green;}        
-    100% {background-color:transparent;}
-}
-
-@-ms-keyframes rightflash {
-    0% { background-color:transparent;}
-    20% { background-color:green;}        
-    100% {background-color:transparent;}
-}
-
-.wrongflash{
-  -moz-animation: wrongflash .4s ease-out;
-  -moz-animation-iteration-count: 1;
-  -webkit-animation: wrongflash .4s ease-out;
-  -webkit-animation-iteration-count: 1;
-  -ms-animation: wrongflash .4s ease-out;
-  -ms-animation-iteration-count: 1;
-}
-
-@-webkit-keyframes wrongflash {
-    0% { background-color:transparent;}
-    20% { background-color:red;}        
-    100% {background-color:transparent;}
-}
-
-
-@-moz-keyframes wrongflash {
-    0% { background-color:transparent;}
-    20% { background-color:red;}        
-    100% {background-color:transparent;}
-}
-
-@-ms-keyframes wrongflash {
-    0% { background-color:transparent;}
-    20% { background-color:red;}        
-    100% {background-color:transparent;}
-}
-
-
 
 .card {
   margin-left: 30px;
@@ -115,7 +79,7 @@ li {
 
 
 .clicked_on {
-  background: grey;
+  background: blue;
   opacity: .4;
 }
 

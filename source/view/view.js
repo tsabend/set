@@ -28,19 +28,17 @@ function clearBoard() {
 }
 
 function rightFlash(){
-	$('body').addClass('rightflash');
- 	setTimeout( function(){
- 	$('body').removeClass('rightflash');
- 		}, 5000);
+	var flash = '<div data-flash class="rightFlash"></div>'
+	$('html').append(flash).hide().fadeIn(10)
 	$('.clicked_on').removeClass('clicked_on');
+ 	$('[data-flash]').fadeOut(300)
 }
 
 function wrongFlash(){
-	$('body').addClass('wrongflash');
- 	setTimeout( function(){
- 	$('body').removeClass('wrongflash');
- 		}, 5000);
+	var flash = '<div data-flash class="wrongFlash"></div>'
+	$('html').append(flash).hide().fadeIn(10)
 	$('.clicked_on').removeClass('clicked_on');
+ 	$('[data-flash]').fadeOut(300)
 }
 
 

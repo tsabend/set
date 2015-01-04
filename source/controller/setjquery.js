@@ -1,4 +1,9 @@
 $(document).ready(function(){	
+		// for(var i = 0; i < 100; i++){
+		clearBoard();
+		runGame();
+		// autoSolve(game);
+		// }
 	$('.startGame').on( "click", function(){
 		$('.board').removeClass('invisible');
 		$('.gameInfo').removeClass('invisible');
@@ -36,18 +41,17 @@ function cardClick (){
 	var clickedItems = $('.clicked_on');
 	if (clickedItems.length === 3) {
 		if(game.guess(getGuess(getLocations(clickedItems)))) {
-			rightFlash();
 			clearBoard();
 			displayGameInfo(game.deck.length, game.correctSets)
 			displayCards(game.board);
 			$('.card').click(cardClick);
+				rightFlash();
 		}
 		else {
 			wrongFlash();
 		}
 	}
 }
-
 // Controls the end of the game view and loads the server (by calling init())
 function endGame() {
 	console.log("in endGame");
@@ -59,7 +63,6 @@ function endGame() {
 	stopTimer();
 	$('.startGame').on();
 }
-
 // Show the game time
 function displayTime() {
     time = Math.floor((Date.now() - game.startingTime)/1000)

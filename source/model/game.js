@@ -72,31 +72,16 @@ Game.prototype.checkBoard = function() {
 }
 // checks if 3 cards are a valid set. adds points and draws if they are.
 Game.prototype.guess = function (cards) {
-  if(cards === false) {
-    console.log('got false in cards')
-    this.drawCard(3)
-  }
-  if(this.board.length > 12) { 
-    if(this.isSet(cards)) {
-      this.correctSets++
-      this.removeSet(cards)
-      // this.isOver()
-      return true
-    } else {
-    return false
-    }
-  } else {
-    if(this.isSet(cards)) {
-      this.correctSets++
-      this.removeSet(cards)
-      // this.isOver()
+  if(this.isSet(cards)) {
+    this.correctSets++
+    this.removeSet(cards)
+    if(this.board.length <= 12) { 
       this.drawCard(3)
-      return true
-    } else {
-    return false
     }
-
-  }
+    return true
+  } else {
+  return false
+  } 
 }
 
 Game.prototype.isOver = function(){
@@ -150,7 +135,7 @@ k_combinations = function(set, k) {
 
 
 // Easter Egg Methods
-// CHEATING!
+// For cheating! :)
 Game.prototype.hackBoard = function() {
   var combinations = k_combinations(this.board, 3)
   for (var i = 0; i < combinations.length; i++) {
@@ -166,7 +151,6 @@ Game.prototype.hint = function() {
   var combinations = k_combinations(this.board, 3)
   for (var i = 0; i < combinations.length; i++) {
     if(this.isSet(combinations[i])) {
-      // For cheating! :)
       console.log(combinations[i][0].number,
         combinations[i][0].shading,
         combinations[i][0].color,
