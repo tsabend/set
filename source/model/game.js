@@ -96,7 +96,7 @@ Game.prototype.removeSet = function (cards) {
 }
 
 // Helper methods on arrays
-// Removes a random element from an array
+// Removes a random element from an array. Destructive.
 sample = function(array) {
   return array.splice(Math.floor(Math.random() * (array.length)),1)[0];
 };

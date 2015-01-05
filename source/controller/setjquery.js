@@ -2,23 +2,58 @@ $(document).ready(function(){
 		// for(var i = 0; i < 100; i++){
 		// clearBoard();
 		// runGame();
-		// autoSolve(game);
 		// }
+		// view = new View
+		// game = new Game
+		// autoSolve(game);
+	//
+	flipIcons()
+	showModal("rules")
+	showModal("hof")
+
 	$('.startGame').on( "click", function(){
 		$(this).remove();
 		view = new View
 		game = new Game
 
-		view.showGame
+		view.showGame()
 		view.updateGame(game)
 		displayTime()
-		$('.hint').show()
+
 		$('.card').click(cardClick)
 		$('.hint').click(function() {alert(game.hint())})
-		$('.cheatbutton').click(function() {autoSolve(game)})
 	});
+
 });
 
+
+	function showModal(attribute){
+		$('.show-'+attribute).on("click", function(){
+			$('[data-' + attribute + ']').slideDown(500)
+			$('[data-esc]').on("click", function(){
+				$('[data-' + attribute + ']').slideUp(500)
+				$(this).off()
+			})
+			$(document).keyup(function(k){
+				if(k.which == 27){
+					$('[data-' + attribute + ']').slideUp(500)
+					$(this).off()
+				}
+			})
+
+		})
+	}
+
+	function flipIcons() {
+		var shadings = ["empty", "fill", "hash"]
+		var colors = ["orange", "purple", "teal"]
+		var shapes = ["cloud", "flash", "arrow"]
+		$('.flip').each(function(index){
+			var src = "../img/"+ sample(shapes) +"_" + sample(shadings) + "_" + sample(colors) +".png"
+			$($('.flip')[index]).attr("src", src).animate()
+		})
+		gt = setTimeout(function(){flipIcons()}, 1000);
+	}
 
 
 // Cheat function for demonstration purposes

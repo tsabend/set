@@ -11,7 +11,7 @@ body {
 
 h1 {
   font-family: 'Egypt 22', cursive;
-  font-size: 10em;
+  font-size: 5em;
   margin-bottom: 5px;
   margin-top: 5px;
   padding-bottom: 5px;
@@ -19,6 +19,11 @@ h1 {
 
 input {
   width: 80px;
+  color: white
+}
+
+table {
+  max-width: 20%;
 }
 
 .bg-light-purple {
@@ -63,6 +68,22 @@ input {
   background-color: white;
 }
 
+.flip {
+  width: 50px;
+  height: 50px;
+}
+
+.modal {
+  position: fixed;
+  background-color: white;
+  left:20%;
+  top:5%;
+  width:60%;
+  height: 90%;
+  border: 1px black solid;
+  z-index: 1;
+}
+
 .three img {
   width: 100%;
 }
@@ -85,10 +106,6 @@ input {
 
 li {
   list-style: none;
-}
-
-.info {
-  display: inline-block;
 }
 
 .row1 {
@@ -125,31 +142,82 @@ li {
 }
 
 .splash {
-  position: relative;
-  -webkit-background-size:cover cover;
+  margin-top: 5%;
+  padding-bottom: 5%;
 }
 
-.splash__presentation {
-  position: absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%
+/* Button Purple Outline */
+
+.button-purple-outline {
+  line-height: 1rem;
+  color: #9856c0;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 2px solid #9856c0;
+  -webkit-transition-duration: .1s;
+  transition-duration: .1s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transition-property: box-shadow, background-color;
+  transition-property: box-shadow, background-color;
 }
 
+.button-purple-outline:hover,
+.button-purple-outline.is-active {
+  color: white;
+  background-color: #9856c0;
+}
 
+.button-purple-outline:active {
+  box-shadow: inset 0 3px 3px 0 rgba(0, 0, 0, .25);
+}
 
-  @media (min-width: 320px) and (max-width: 1024px){.splash{min-height:360px}
+.button-purple-outline:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, .5), 0 0 1px 4px rgba(0, 118, 223, .5);
 }
-  @media (min-width: 1024px) and (max-width: 1200px){.splash{min-height:460px}
+
+.button-purple-outline:disabled,
+.button-purple-outline.is-disabled {
+  color: #9856c0;
+  background-color: transparent;
+  opacity: .5;
 }
-  @media (min-width: 1200px) and (max-width: 1500px){.splash{min-height:460px}
+
+/* Button Orange Outline */
+
+.button-orange-outline {
+  line-height: 1rem;
+  color: #F6BE43;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 2px solid #F6BE43;
+  -webkit-transition-duration: .1s;
+  transition-duration: .1s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transition-property: box-shadow, background-color;
+  transition-property: box-shadow, background-color;
 }
-  @media (min-width: 1500px) and (max-width: 2560px){.splash{min-height:700px}
+
+.button-orange-outline:hover,
+.button-orange-outline.is-active {
+  color: white;
+  background-color: #F6BE43;
 }
-.splash__presentation__container{height:100%;
-    position:relative}
-    @media (min-width: 320px) and (max-width: 1024px){.splash__presentation .button.button-huge,.splash__presentation .nestitem__editmenu a.button-huge.moveaction,.nestitem__editmenu .splash__presentation a.button-huge.moveaction,.splash__presentation .nestitem__editmenu a.button-huge.renameaction,.nestitem__editmenu .splash__presentation a.button-huge.renameaction{margin:0 auto;
-    display:block;
-  width:80px;margin-top:1em}
+
+.button-orange-outline:active {
+  box-shadow: inset 0 3px 3px 0 rgba(0, 0, 0, .25);
+}
+
+.button-orange-outline:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, .5), 0 0 1px 4px rgba(0, 118, 223, .5);
+}
+
+.button-orange-outline:disabled,
+.button-orange-outline.is-disabled {
+  color: #F6BE43;
+  background-color: transparent;
+  opacity: .5;
 }

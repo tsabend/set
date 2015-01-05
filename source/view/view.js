@@ -16,18 +16,22 @@ View.prototype.displayGameInfo = function(game) {
 }
 
 View.prototype.showGame = function() {
-	$('.board').show()
+	$('.outer-board').show()
+	// $('.board').show()
+	console.log('showGame	')
 	$('.gameInfo').show()
-	$('.hint').show()
+	$('.landing').hide()
 	$('.endGameScreen').hide()
 	$('.highScores').hide()
 }
 
 View.prototype.showEndGame = function() {
-	$('.board').hide()
+	// $('.board').hide()
+	$('.outer-board').hide()
 	$('.gameInfo').hide()
 	$('.endGameScreen').show()
 	$('.highScores').show()
+	$('.restart').show()
 }
 
 View.prototype.clearBoard = function() {
