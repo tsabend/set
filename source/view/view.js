@@ -59,7 +59,7 @@ View.prototype.numberAsWord = function(number) {
 	}
 }
 
-View.prototype.makeImageHtml = function(number, shape, color, shade) {
+View.prototype.makeImageHtml = function(shape, color, shade) {
 	return shape + '_' + shade + '_' + color + '.png'
 }
 
@@ -70,7 +70,7 @@ View.prototype.addToRow = function(row, card) {
 View.prototype.makeCard = function(card, location) {
 	var cardFace = "";
 	for(var i = 0; i < card.number; i++) {
-		cardFace += "<li class='image-container'><img src=' ../img/" + this.makeImageHtml(card.number, card.shape, card.color, card.shading) + "'></li>"
+		cardFace += "<li class='image-container'><img src=' ../img/" + this.makeImageHtml(card.shape, card.color, card.shading) + "'></li>"
 	}
 	return "<ul data-location='" + location + "' class='card " + this.numberAsWord(card.number) + "'>" + cardFace + "</ul>";
 }
