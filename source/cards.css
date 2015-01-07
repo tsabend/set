@@ -27,7 +27,11 @@ table {
 }
 
 .bg-light-purple {
-  background-color: #8F79AC
+  background-color: #8F79AC;
+}
+
+.bg-black {
+  background-color: #3c4142;
 }
 
 .bg-purple {
@@ -56,17 +60,6 @@ table {
   opacity: .7;
 }
 
-.card {
-  margin-left: 30px;
-  list-style-type: none;
-  border: 2px black solid;
-  border-radius: 10px;
-  padding: 18px 30px 18px 30px;
-  text-align: center;
-  max-height: 150px;
-  height: 150px;
-  background-color: white;
-}
 
 .flip {
   width: 50px;
@@ -79,9 +72,24 @@ table {
   left:20%;
   top:5%;
   width:60%;
-  height: 90%;
+  /*height: 90%;*/
   border: 1px black solid;
   z-index: 1;
+  padding: 2.5% 0.5% 2.5% 0.5%;
+}
+
+/* CSS Rules for Cards */
+.card {
+  margin-left: 30px;
+  list-style-type: none;
+  border: 2px black solid;
+  border-radius: 10px;
+  padding: 12px 24px 12px 24px;
+  text-align: center;
+  max-height: 140px;
+  max-width: 40px;
+  height: 140px;
+  background-color: white;
 }
 
 .three img {
@@ -97,11 +105,11 @@ table {
 
 .one img {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 48px;
 }
 
 .image-container {
-  width: 45px;
+  width: 40px;
 }
 
 li {
