@@ -151,7 +151,8 @@ Game.prototype.hint = function() {
   var combinations = k_combinations(this.board, 3)
   for (var i = 0; i < combinations.length; i++) {
     if(this.isSet(combinations[i])) {
-      return "It starts with " + combinations[i][0].number + " " + combinations[i][0].shading + " " + combinations[i][0].color + " " + combinations[i][0].shape
+      // return a the first card.
+      return combinations[i][0]
       //   combinations[i][0].number,
       //   combinations[i][0].shading,
       //   combinations[i][0].color,
