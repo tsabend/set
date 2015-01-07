@@ -21,7 +21,10 @@ $(document).ready(function(){
 		displayTime()
 
 		$('.card').click(cardClick)
-		$('.hint').click(function() {alert(game.hint())})
+		showModal("hint")
+		$('.show-hint').click(function() {
+			$('[data-hintText]').html(view.makeCard(game.hint(), "hint"))
+		});
 	});
 
 });
