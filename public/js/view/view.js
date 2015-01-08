@@ -1,5 +1,5 @@
-// These functions help display the board and
-// report certain board changes back to the controller
+// These functions help display the board,
+// cards and various game states
 
 function View() {
 }
@@ -17,8 +17,6 @@ View.prototype.displayGameInfo = function(game) {
 
 View.prototype.showGame = function() {
 	$('.outer-board').show()
-	// $('.board').show()
-	console.log('showGame	')
 	$('.gameInfo').show()
 	$('.landing').hide()
 	$('.endGameScreen').hide()
@@ -26,12 +24,14 @@ View.prototype.showGame = function() {
 }
 
 View.prototype.showEndGame = function() {
-	// $('.board').hide()
 	$('.outer-board').hide()
 	$('.gameInfo').hide()
 	$('.endGameScreen').show()
-	$('.highScores').show()
-	$('.restart').show()
+}
+
+View.prototype.restartGame = function() {
+	$('.endGameScreen').hide()
+	$('.landing').show()
 }
 
 View.prototype.clearBoard = function() {
