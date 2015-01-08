@@ -22,6 +22,6 @@ module.exports = function(app) {
       res.render('set')
     }
 
-    app.get('/set', route.set);
+    app.get('/zest', route.set);
     app.get('/', route.index);
 };
