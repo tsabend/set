@@ -72,7 +72,8 @@ h1 {
   left:20%;
   top:5%;
   width:60%;
-  max-height: 800px;
+  max-height: 550px;
+  overflow: scroll;
   border: 1px black solid;
   z-index: 1;
   padding: 2.5% 0.5% 2.5% 0.5%;
