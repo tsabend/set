@@ -22,7 +22,7 @@ input {
   color: white
 }
 
-table {
+#gameInfo table {
   max-width: 20%;
 }
 
@@ -72,11 +72,13 @@ table {
   left:20%;
   top:5%;
   width:60%;
-  /*height: 90%;*/
+  max-height: 800px;
   border: 1px black solid;
   z-index: 1;
   padding: 2.5% 0.5% 2.5% 0.5%;
 }
+
+.gif {width:76px;height:76px}
 
 /* CSS Rules for Cards */
 .card {

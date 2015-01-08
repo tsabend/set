@@ -29,7 +29,7 @@ $(document).ready(function(){
 		}).done(function(res){
 			var $list = $('[data-hof="scores"]')
 			res.scores.forEach(function(score){
-				var scoreHtml = '<li>' + score.username + ': ' + score.highscore + ' <img src="' + score.gif + '"></li>'
+				var scoreHtml = '<tr><td><img class="gif" src="' + score.gif + '"></td><td><h3 class="m0">' + score.username + '</td><td><p class="m0">' + score.highscore + '</p></td></tr>'
 				$list.append(scoreHtml)
 			})
 		})
