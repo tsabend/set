@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= siteName %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="javascript:"><%= siteName %></a>
+        </div>
+      </div>
+    </div>
+
+    <form id="score" action="/score" method="post">
+      <input type="text" name="score[username]" value="thomas">
+      <input type="text" name="score[gif]" value="http://cdn.osxdaily.com/wp-content/uploads/2013/07/dancing-banana.gif">
+      <input type="number" name="score[highscore]" value="1000">
+      <input type="submit" name="submit" value="submit">
+    </form>
+
+    <div class="container">
+        <h1>Routes</h1>
+        <%if (typeof routes != 'undefined') { %>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Path</th>
+                      <th>Method</th>
+                      <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% i = 1%>
+                <% (routes).forEach(function(appRoute){ %>
+                    <%if (typeof appRoute != 'undefined') { %>
+                        <tr>
+                            <td><%= i++ %></td>
+                            <td><%= appRoute.path %></td>
+                            <td><%= appRoute.method %></td>
+                            <td><a href="<%= appRoute.path %>" title="<%= appRoute.path %>"><%= appRoute.path %></a></td>
+                        </tr>
+                     <% } %>
+                <% });%>
+                </tbody>
+            </table>
+        <% } %>
+        </div>
+  <script type="text/javascript" src="/js/script.js"></script>
+</body>
+</html>

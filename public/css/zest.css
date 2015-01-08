@@ -1,0 +1,231 @@
+/* purple: #9856c0*/
+/*orange: #F6BE43*/
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+@import url(http://fonts.googleapis.com/css?family=Amatic+SC);
+
+body {
+  background-color: #F4F4F4;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+h1 {
+  font-family: 'Egypt 22', cursive;
+  font-size: 5em;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding-bottom: 5px;
+}
+
+input {
+  width: 80px;
+  color: white
+}
+
+table {
+  max-width: 20%;
+}
+
+.bg-light-purple {
+  background-color: #8F79AC;
+}
+
+.bg-black {
+  background-color: #3c4142;
+}
+
+.bg-purple {
+  background-color: #7A589C;
+  background-color: #C91921;
+  background-color: #948CBD;
+  #8F79AC#8F79AC
+
+}
+
+.rightflash {
+  background-color:green;
+  height:100%;
+  width:100%;
+  position:fixed;
+  top:0;
+  opacity: .7;
+}
+
+.wrongflash {
+  background-color:red;
+  height:100%;
+  width:100%;
+  position:fixed;
+  top:0;
+  opacity: .7;
+}
+
+
+.flip {
+  width: 50px;
+  height: 50px;
+}
+
+.modal {
+  position: fixed;
+  background-color: white;
+  left:20%;
+  top:5%;
+  width:60%;
+  /*height: 90%;*/
+  border: 1px black solid;
+  z-index: 1;
+  padding: 2.5% 0.5% 2.5% 0.5%;
+}
+
+/* CSS Rules for Cards */
+.card {
+  margin-left: 30px;
+  list-style-type: none;
+  border: 2px black solid;
+  border-radius: 10px;
+  padding: 12px 24px 12px 24px;
+  text-align: center;
+  max-height: 140px;
+  max-width: 40px;
+  height: 140px;
+  background-color: white;
+}
+
+.three img {
+  width: 100%;
+}
+
+
+.two img {
+  width: 100%;
+  margin-top: 18px;
+}
+
+
+.one img {
+  width: 100%;
+  margin-top: 48px;
+}
+
+.image-container {
+  width: 40px;
+}
+
+li {
+  list-style: none;
+}
+
+.row1 {
+  display: -webkit-inline-box;
+}
+
+.row2 {
+  display: -webkit-inline-box;
+}
+
+.row3 {
+  display: -webkit-inline-box;
+}
+
+
+
+.clicked_on {
+  background: blue;
+  opacity: .4;
+}
+
+.board {
+}
+
+.endGameScreen {
+}
+
+.invisible {
+  display: none;
+}
+
+.gameInfo {
+  display: inline-flex;
+}
+
+.splash {
+  margin-top: 5%;
+  padding-bottom: 5%;
+}
+
+/* Button Purple Outline */
+
+.button-purple-outline {
+  line-height: 1rem;
+  color: #9856c0;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 2px solid #9856c0;
+  -webkit-transition-duration: .1s;
+  transition-duration: .1s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transition-property: box-shadow, background-color;
+  transition-property: box-shadow, background-color;
+}
+
+.button-purple-outline:hover,
+.button-purple-outline.is-active {
+  color: white;
+  background-color: #9856c0;
+}
+
+.button-purple-outline:active {
+  box-shadow: inset 0 3px 3px 0 rgba(0, 0, 0, .25);
+}
+
+.button-purple-outline:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, .5), 0 0 1px 4px rgba(0, 118, 223, .5);
+}
+
+.button-purple-outline:disabled,
+.button-purple-outline.is-disabled {
+  color: #9856c0;
+  background-color: transparent;
+  opacity: .5;
+}
+
+/* Button Orange Outline */
+
+.button-orange-outline {
+  line-height: 1rem;
+  color: #F6BE43;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 2px solid #F6BE43;
+  -webkit-transition-duration: .1s;
+  transition-duration: .1s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transition-property: box-shadow, background-color;
+  transition-property: box-shadow, background-color;
+}
+
+.button-orange-outline:hover,
+.button-orange-outline.is-active {
+  color: white;
+  background-color: #F6BE43;
+}
+
+.button-orange-outline:active {
+  box-shadow: inset 0 3px 3px 0 rgba(0, 0, 0, .25);
+}
+
+.button-orange-outline:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, .5), 0 0 1px 4px rgba(0, 118, 223, .5);
+}
+
+.button-orange-outline:disabled,
+.button-orange-outline.is-disabled {
+  color: #F6BE43;
+  background-color: transparent;
+  opacity: .5;
+}

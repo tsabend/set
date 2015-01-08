@@ -1,0 +1,38 @@
+{% import 'macros/example.html' as macros %}
+<!doctype html>
+<html>
+
+{% include 'partials/head.html' %}
+
+<body class="container px2">
+
+{% include 'partials/docs-nav.html' %}
+
+<div class="clearfix mxn2">
+
+  <div class="{% if !fullwidth %}sm-col sm-col-9 {% endif %}px2 py2">
+
+    {% block content %}{% endblock %}
+
+    {% if page.next_page || page.previous_page %}
+      <hr class="ml0 col-5 sm-col-3 hr-block bg-blue">
+      {% include 'partials/pagination.html' %}
+    {% endif %}
+
+  </div>
+
+  {% if !fullwidth %}
+    <div class="sticky top-0 px2 py2 sm-col sm-col-3 sm-show">
+      {% include 'partials/in-page-nav.html' %}
+    </div>
+  {% endif %}
+
+</div>
+
+{% if hide_megafooter != true %}
+  {% include 'partials/docs-mega-footer.html' %}
+{% endif %}
+{% include 'partials/footer.html' %}
+
+</body>
+</html>
