@@ -9,7 +9,8 @@ $(document).ready(function(){
 		game = new Game
 		view.showGame()
 		listenForGameEnding()
-		$('#hack').click(function(){autoSolve(game)})
+		// hack function disabled
+		// $('#hack').click(function(){autoSolve(game)})
 		view.updateGame(game)
 		displayTime()
 		$('.card').click(cardClick)
