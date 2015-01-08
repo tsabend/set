@@ -1,8 +1,9 @@
 /* purple: #9856c0*/
 /*orange: #F6BE43*/
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
-@import url(http://fonts.googleapis.com/css?family=Amatic+SC);
+@import url(//fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+@import url(//fonts.googleapis.com/css?family=Amatic+SC);
+@import url(public/Egypt 22.ttf);
 
 body {
   background-color: #F4F4F4;
