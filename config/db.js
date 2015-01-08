@@ -2,10 +2,10 @@
 var mongoose = require('mongoose');
 
 var config = {
-  "db": "highScores",  
-  "host": "localhost",  
-  "user": "",
-  "pw": "",
+  "db": "highScores",
+  "host": "localhost",
+  "user": "thomas",
+  "pw": "admin",
   "port": 27017
 };
 
