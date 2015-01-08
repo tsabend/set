@@ -6,7 +6,7 @@ module.exports = function(app) {
 
   // ALL
   api.scores = function (req, res) {
-    Score.find(function(err, scores) {
+    Score.find().sort('-highscore').limit(10).exec(function(err, scores) {
       if (err) {
         res.json(500, err);
       } else {
