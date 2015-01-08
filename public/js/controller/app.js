@@ -5,14 +5,13 @@ $(document).ready(function(){
 	showModal("hof")
 
 	$('.startGame').on( "click", function(){
-		$(this).remove();
 		view = new View
 		game = new Game
-
 		view.showGame()
+		listenForGameEnding()
+		$('#hack').click(function(){autoSolve(game)})
 		view.updateGame(game)
 		displayTime()
-
 		$('.card').click(cardClick)
 		showModal("hint")
 		$('.show-hint').click(function() {
@@ -28,6 +27,7 @@ $(document).ready(function(){
 			url: '/scores'
 		}).done(function(res){
 			var $list = $('[data-hof="scores"]')
+			$list.empty()
 			res.scores.forEach(function(score){
 				var scoreHtml = '<tr><td><img class="gif" src="' + score.gif + '"></td><td><h3 class="m0">' + score.username + '</td><td><p class="m0">' + score.highscore + '</p></td></tr>'
 				$list.append(scoreHtml)
@@ -66,12 +66,9 @@ $(document).ready(function(){
 
 // Cheat function for demonstration purposes
 function autoSolve(game) {
-		while(game.isOver()===false) {
 		game.guess(game.hackBoard());
-	}
 		view.updateGame(game)
 		$('.card').click(cardClick);
-		endGame()
 }
 // Makes cards talk between view-controller-model
 function cardClick (){
@@ -91,14 +88,6 @@ function cardClick (){
 		}
 	}
 }
-// Controls the end of the game view
-function endGame() {
-	console.log("in endGame");
-	view.showEndGame()
-	$('#score').val(game.score);
-	stopTimer();
-	$('.startGame').on();
-}
 // Show the game time
 function displayTime() {
     time = Math.floor((Date.now() - game.startingTime)/1000)
@@ -107,4 +96,48 @@ function displayTime() {
 }
 function stopTimer() {
     clearTimeout(t);
+}
+
+// Controls the end of the game behavior
+function listenForGameEnding() {
+	setTimeout(function(){
+		if(game.isOver() == true){
+			endGame()
+		} else {
+			listenForGameEnding()
+		}
+	}, 1000);
+}
+
+function endGame() {
+	stopTimer();
+	$('#score').val(game.score());
+	view.showEndGame()
+	submitScore()
+}
+
+function submitScore() {
+	$('#submitScore').submit(function(e){
+		e.preventDefault()
+		var data = $(this).serialize()
+		$.ajax({
+			url: '/score',
+			method: 'POST',
+			data: data
+		}).done(function(res){
+			getHighScores()
+			view.restartGame()
+			$('[data-hof]').show()
+			$('[data-esc]').on("click", function(){
+				$('[data-hof]').slideUp(500)
+				$(this).off()
+			})
+			$(document).keyup(function(k){
+				if(k.which == 27){
+					$('[data-hof]').slideUp(500)
+					$(this).off()
+				}
+			})
+		})
+	})
 }
