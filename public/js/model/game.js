@@ -3,8 +3,11 @@ function Game() {
   this.board = []
   this.correctSets = 0
   this.startingTime = Date.now()
-  this.score = 0
   this.createBoard()
+}
+
+Game.prototype.score = function(){
+    return Math.floor((this.correctSets * 100000000)/(Date.now() - this.startingTime))
 }
 
 Game.prototype.makeDeck = function() {
