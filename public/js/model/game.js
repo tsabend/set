@@ -49,7 +49,7 @@ Game.prototype.drawCard = function (number) {
   }
   // check the board to make sure there is at least 1 set, if not, draw 3 more cards
   if(this.checkBoard() === false) {
-    console.log("No possible sets", this.correctSets)
+  // draw 3 if no possible sets
     this.drawCard(3)
   }
 }
@@ -78,7 +78,8 @@ Game.prototype.guess = function (cards) {
   if(this.isSet(cards)) {
     this.correctSets++
     this.removeSet(cards)
-    if(this.board.length <= 12) {
+// only draw more if the board didn't have 15
+    if(this.board.length < 12) {
       this.drawCard(3)
     }
     return true
@@ -98,45 +99,6 @@ Game.prototype.removeSet = function (cards) {
   }
 }
 
-// Helper methods on arrays
-// Removes a random element from an array. Destructive.
-sample = function(array) {
-  return array.splice(Math.floor(Math.random() * (array.length)),1)[0];
-};
-//Returns an array of unique attributes.
-unique = function(array) {
-  return array.filter(function (a, b, c) {
-      return c.indexOf(a, b + 1) < 0;
-  })
-}
-// Returns all possible combinations of a set of items gor a given length k
-k_combinations = function(set, k) {
-	var i, j, combs, head, tailcombs
-	if (k > set.length || k <= 0) {
-		return []
-	}
-	if (k == set.length) {
-		return [set]
-	}
-	if (k == 1) {
-		combs = []
-		for (i = 0; i < set.length; i++) {
-			combs.push([set[i]])
-		}
-		return combs
-	}
-	combs = []
-	for (i = 0; i < set.length - k + 1; i++) {
-		head = set.slice(i, i+1)
-		tailcombs = k_combinations(set.slice(i + 1), k - 1)
-		for (j = 0; j < tailcombs.length; j++) {
-			combs.push(head.concat(tailcombs[j]))
-		}
-	}
-	return combs
-}
-
-
 // Easter Egg Methods
 // For cheating! :)
 Game.prototype.hackBoard = function() {
@@ -154,22 +116,47 @@ Game.prototype.hint = function() {
   var combinations = k_combinations(this.board, 3)
   for (var i = 0; i < combinations.length; i++) {
     if(this.isSet(combinations[i])) {
-      // return a the first card.
+      // return the first card.
       return combinations[i][0]
-      //   combinations[i][0].number,
-      //   combinations[i][0].shading,
-      //   combinations[i][0].color,
-      //   combinations[i][0].shape,
-      //   combinations[i][1].number,
-      //   combinations[i][1].shading,
-      //   combinations[i][1].color,
-      //   combinations[i][1].shape,
-      //   combinations[i][2].number,
-      //   combinations[i][2].shading,
-      //   combinations[i][2].color,
-      //   combinations[i][2].shape
-      // return true
     }
   }
   return false
+}
+
+// Globally useful methods on arrays
+// Removes a random element from an array. Destructive.
+sample = function(array) {
+  return array.splice(Math.floor(Math.random() * (array.length)),1)[0];
+};
+//Returns an array of unique attributes.
+unique = function(array) {
+  return array.filter(function (a, b, c) {
+    return c.indexOf(a, b + 1) < 0;
+  })
+}
+// Returns all possible combinations of a set of items gor a given length k
+k_combinations = function(set, k) {
+  var i, j, combs, head, tailcombs
+  if (k > set.length || k <= 0) {
+    return []
+  }
+  if (k == set.length) {
+    return [set]
+  }
+  if (k == 1) {
+    combs = []
+    for (i = 0; i < set.length; i++) {
+      combs.push([set[i]])
+    }
+    return combs
+  }
+  combs = []
+  for (i = 0; i < set.length - k + 1; i++) {
+    head = set.slice(i, i+1)
+    tailcombs = k_combinations(set.slice(i + 1), k - 1)
+    for (j = 0; j < tailcombs.length; j++) {
+      combs.push(head.concat(tailcombs[j]))
+    }
+  }
+  return combs
 }
