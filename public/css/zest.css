@@ -17,7 +17,7 @@ h1 {
   padding-bottom: 5px;
 }
 
-input {
+#gameInfo input {
   width: 80px;
   color: white
 }
@@ -79,6 +79,8 @@ input {
 }
 
 .gif {width:76px;height:76px}
+
+#submitScore input {color:black}
 
 /* CSS Rules for Cards */
 .card {
