@@ -18,10 +18,10 @@ module.exports = function(app) {
         res.render('index', {locals: { routes: routes }});
     };
 
-    route.set = function (req, res) {
-      res.render('set')
+    route.zest = function (req, res) {
+      res.render('zest')
     }
 
-    app.get('/zest', route.set);
+    app.get('/zest', route.zest);
     app.get('/', route.index);
 };
