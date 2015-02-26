@@ -22,47 +22,45 @@ $(document).ready(function(){
 
 });
 
-
-	function getHighScores(){
-		$.ajax({
-			url: '/scores'
-		}).done(function(res){
-			var $list = $('[data-hof="scores"]')
-			$list.empty()
-			res.scores.forEach(function(score){
-				var scoreHtml = '<tr><td><img class="gif" src="' + score.gif + '"></td><td><h3 class="m0">' + score.username + '</td><td><p class="m0">' + score.highscore + '</p></td></tr>'
-				$list.append(scoreHtml)
-			})
+function getHighScores(){
+	$.ajax({
+		url: '/scores'
+	}).done(function(res){
+		var $list = $('[data-hof="scores"]')
+		$list.empty()
+		res.scores.forEach(function(score){
+			var scoreHtml = '<tr><td><img class="gif" src="' + score.gif + '"></td><td><h3 class="m0">' + score.username + '</td><td><p class="m0">' + score.highscore + '</p></td></tr>'
+			$list.append(scoreHtml)
 		})
-	}
+	})
+}
 
-	function showModal(attribute){
-		$('.show-'+attribute).on("click", function(){
-			$('[data-' + attribute + ']').slideDown(500)
-			$('[data-esc]').on("click", function(){
+function showModal(attribute){
+	$('.show-'+attribute).on("click", function(){
+		$('[data-' + attribute + ']').slideDown(500)
+		$('[data-esc]').on("click", function(){
+				$('[data-' + attribute + ']').slideUp(500)
+			$(this).off()
+		})
+		$(document).keyup(function(k){
+			if(k.which == 27){
 				$('[data-' + attribute + ']').slideUp(500)
 				$(this).off()
-			})
-			$(document).keyup(function(k){
-				if(k.which == 27){
-					$('[data-' + attribute + ']').slideUp(500)
-					$(this).off()
-				}
-			})
-
+			}
 		})
-	}
+	})
+}
 
-	function flipIcons() {
-		var shadings = ["empty", "fill", "hash"]
-		var colors = ["orange", "purple", "teal"]
-		var shapes = ["cloud", "flash", "arrow"]
-		$('.flip').each(function(index){
-			var src = "../img/"+ sample(shapes) +"_" + sample(shadings) + "_" + sample(colors) +".png"
-			$($('.flip')[index]).attr("src", src).animate()
-		})
-		gt = setTimeout(function(){flipIcons()}, 1000);
-	}
+function flipIcons() {
+	var shadings = ["empty", "fill", "hash"]
+	var colors = ["orange", "purple", "teal"]
+	var shapes = ["cloud", "flash", "arrow"]
+	$('.flip').each(function(index){
+		var src = "../img/"+ sample(shapes) +"_" + sample(shadings) + "_" + sample(colors) +".png"
+		$($('.flip')[index]).attr("src", src).animate()
+	})
+	gt = setTimeout(function(){flipIcons()}, 1000);
+}
 
 
 // Cheat function for demonstration purposes
